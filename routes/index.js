@@ -13,4 +13,24 @@ router.get('/', function(requ, res, next){ // request, response, next
     })
 }) //get request to the home page
 
+router.get('/feedback-form', function(req, res, next) {
+    res.render('student_feedback_form')
+})
+
+router.get('/submit-feedback', function(req, res, next) {
+    // access form data
+    const formData = req.query
+    console.log(formData)
+    res.render('thank_you', { 
+        name: formData.name,
+        email: formData.email,
+        comments: formData.comments,
+        currentStudent: formData["current-students"]
+    })
+})
+
+
+
+
+// must be last line in file
 module.exports = router
