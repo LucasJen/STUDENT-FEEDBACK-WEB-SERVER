@@ -17,10 +17,12 @@ router.get('/feedback-form', function(req, res, next) {
     res.render('student_feedback_form')
 })
 
-router.get('/submit-feedback', function(req, res, next) {
+router.post('/submit-feedback', function(req, res, next) {
     // access form data
-    const formData = req.query
+    // const formData = req.query // for a GET request - reds url query
+    const formData = req.body // for a post request
     console.log(formData)
+
     res.render('thank_you', { 
         name: formData.name,
         email: formData.email,
